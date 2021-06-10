@@ -1,6 +1,6 @@
 {
-    "name": "colby-college/some-site",
-    "description": "Configuration project for the some-site.colby.edu site",
+    "name": "colby-college/museum-exhibits-site",
+    "description": "Configuration project for the exhibits.museum.colby.edu site",
     "type": "project",
     "require": {
         "johnpbloch/wordpress-core-installer": "^1.0",
@@ -19,6 +19,7 @@
         "devgeniem/wp-redis-object-cache-dropin": "^1.6",
         "wpackagist-plugin/cache-control": "^2.2.3",
         "colbycommunications/colby-base-theme": "dev-master",
+        "colbycommunications/colby-museum-exhibits-theme": "dev-master",
         "wpackagist-plugin/public-post-preview": "^2.9.1",
         "wp-graphql/wp-graphql": "^0.12.1",
         "wp-graphql/wp-graphiql": "^1.0",
@@ -33,6 +34,10 @@
         }
     ],
     "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/ColbyCommunications/colby-museum-exhibits-theme"
+        },
         {
             "type": "git",
             "url": "https://github.com/ColbyCommunications/colby-base-theme"
