@@ -48,10 +48,8 @@ class Cc_Exhibitions_Public {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-
+		$this->version     = $version;
 	}
 
 	/**
@@ -60,21 +58,7 @@ class Cc_Exhibitions_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Cc_Exhibitions_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Cc_Exhibitions_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/cc-exhibitions-public.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -83,21 +67,31 @@ class Cc_Exhibitions_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Cc_Exhibitions_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Cc_Exhibitions_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/cc-exhibitions-public.js', array( 'jquery' ), $this->version, false );
+	}
 
+	public function register_shortcodes() {
+		add_shortcode( 'display_exhibitions', array( $this, 'shortcode_display_exhibitions' ) );
+	}
+
+	public function shortcode_display_exhibitions( $atts ) {
+		$atts = shortcode_atts( [ 'type' => 'upcoming' ], $atts );
+
+		$pagination  = '';
+		$summary     = '';
+		$search_args = Cc_Exhibitions_Admin::get_search_args();
+
+		if ( 'travelling' === $atts['type'] ) {
+			$search_args['is_travelling'] = 1;
+		} else {
+			$search_args['type'] = $atts['type'];
+		}
+
+		$posts = Cc_Exhibitions_Admin::get_all( $search_args, $pagination, $summary );
+
+		ob_start();
+		require_once plugin_dir_path( __FILE__ ) . 'partials/display_exhibitions.php';
+		return ob_get_clean();
 	}
 
 }
