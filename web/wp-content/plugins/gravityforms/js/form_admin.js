@@ -1,10 +1,21 @@
+/* eslint-env jquery */
+
 /**
 * Common JS functions for form settings and form editor pages.
 */
 
+var __, _x, _n, _nx;
+__  = wp.i18n.__;
+_x  = wp.i18n._x;
+_n  = wp.i18n._n;
+_nx = wp.i18n._nx;
+
+
 jQuery(document).ready(function($){
 
     gaddon.init();
+
+    gform.adminUtils.handleUnsavedChanges( '#gform-settings' );
 
     $(document).on('change', '.gfield_rule_value_dropdown', function(){
         SetRuleValueDropDown($(this));
@@ -43,8 +54,7 @@ function FormatCurrency(element){
 	}
 }
 
-function ToggleConditionalLogic(isInit, objectType){
-    var speed = isInit ? "" : "slow";
+function ToggleConditionalLogic( isInit, objectType ) {
     if(jQuery('#' + objectType + '_conditional_logic').is(":checked")){
 
         var obj = GetConditionalObject(objectType);
@@ -56,12 +66,11 @@ function ToggleConditionalLogic(isInit, objectType){
         SetConditionalProperty(objectType, "logicType", jQuery("#" + objectType + "_logic_type").val());
         SetRule(objectType, 0);
 
-        jQuery('#' + objectType + '_conditional_logic_container').show(speed);
+        jQuery('#' + objectType + '_conditional_logic_container').show();
     }
     else{
-        jQuery('#' + objectType + '_conditional_logic_container').hide(speed);
+        jQuery('#' + objectType + '_conditional_logic_container').hide();
     }
-
 }
 
 function GetConditionalObject(objectType){
@@ -77,6 +86,7 @@ function GetConditionalObject(objectType){
     case "next_button" :
         var field = GetSelectedField();
         object = field["nextButton"];
+        object.id = field.id;
         break;
 
     case "confirmation":
@@ -121,8 +131,22 @@ function CreateConditionalLogic(objectType, obj){
     else
         objText = gf_vars.thisFormButton;
 
+    // Some elements are shown/hidden, and some elements are enabled/disabled.
+    var showText;
+    var hideText;
+    if( objectType == "next_button" ) {
+        showText = gf_vars.enable;
+        hideText = gf_vars.disable;
+    } else {
+        showText = gf_vars.show;
+        hideText = gf_vars.hide;
+    }
+
     var descPieces = {};
-    descPieces.actionType = "<select id='" + objectType + "_action_type' onchange='SetConditionalProperty(\"" + objectType + "\", \"actionType\", jQuery(this).val());'><option value='show' " + showSelected + ">" + gf_vars.show + "</option><option value='hide' " + hideSelected + ">" + gf_vars.hide + "</option></select>";
+    if( objectType == "form_button" ) {
+        descPieces.a11yWarning = "<div class='gform-accessibility-warning'><span class='gform-icon gform-icon--accessibility'></span>" + gf_vars.conditional_logic_a11y + "</div>";
+    }
+    descPieces.actionType = "<select id='" + objectType + "_action_type' onchange='SetConditionalProperty(\"" + objectType + "\", \"actionType\", jQuery(this).val());'><option value='show' " + showSelected + ">" + showText + "</option><option value='hide' " + hideSelected + ">" + hideText + "</option></select>";
     descPieces.objectDescription = objText;
     descPieces.logicType = "<select id='" + objectType + "_logic_type' onchange='SetConditionalProperty(\"" + objectType + "\", \"logicType\", jQuery(this).val());'><option value='all' " + allSelected + ">" + gf_vars.all + "</option><option value='any' " + anySelected + ">" + gf_vars.any + "</option></select>";
     descPieces.ofTheFollowingMatch = gf_vars.ofTheFollowingMatch;
@@ -138,9 +162,21 @@ function CreateConditionalLogic(objectType, obj){
         str += GetRuleFields(objectType, i, rule.fieldId);
         str += GetRuleOperators(objectType, i, rule.fieldId, rule.operator);
         str += GetRuleValues(objectType, i, rule.fieldId, rule.value);
-        str += "<a class='add_field_choice' title='add another rule' onclick=\"InsertRule('" + objectType + "', " + (i+1) + ");\" onkeypress=\"InsertRule('" + objectType + "', " + (i+1) + ");\" ><i class='gficon-add'></i></a>";
+        str += "<button " +
+            "type='button' " +
+            "class='add_field_choice gform-st-icon gform-st-icon--circle-plus' " +
+            "title='add another rule' " +
+            "onclick=\"InsertRule('" + objectType + "', " + (i+1) + ");\" " +
+            "onkeypress=\"InsertRule('" + objectType + "', " + (i+1) + ");\"" +
+            "></button>";
         if(obj.conditionalLogic.rules.length > 1 )
-            str += "<a class='delete_field_choice' title='remove this rule' onclick=\"DeleteRule('" + objectType + "', " + i + ");\" onkeypress=\"DeleteRule('" + objectType + "', " + i + ");\" ><i class='gficon-subtract'></i></a></li>";
+            str += "<button " +
+                "type='button' " +
+                "class='delete_field_choice gform-st-icon gform-st-icon--circle-minus' " +
+                "title='remove this rule' " +
+                "onclick=\"DeleteRule('" + objectType + "', " + i + ");\" " +
+                "onkeypress=\"DeleteRule('" + objectType + "', " + i + ");\"" +
+                "></button></li>";
 
         str += "</div>";
     }
@@ -149,6 +185,11 @@ function CreateConditionalLogic(objectType, obj){
 
     //initializing placeholder script
     Placeholders.enable();
+
+    jQuery( '#' + objectType + '_conditional_logic', document ).parents( 'form' ).on( 'submit', function( e ) {
+        jQuery( '#' + objectType + '_conditional_logic_object' ).val( JSON.stringify( GetConditionalObject( objectType ).conditionalLogic ) );
+    } );
+
 }
 
 function GetRuleOperators( objectType, i, fieldId, selectedOperator ) {
@@ -336,8 +377,17 @@ function GetRuleValues(objectType, ruleIndex, selectedFieldId, selectedValue, in
         }
     }
     else if(field && field.choices && jQuery.inArray(operator, ["is", "isnot"]) > -1){
-        var ruleChoices = field.placeholder ? [{
-            text: field.placeholder,
+        var emptyChoice,
+            ruleChoices;
+
+        if (GetInputType(field) === 'multiselect') {
+            emptyChoice = gf_vars.emptyChoice;
+        } else if (field.placeholder) {
+            emptyChoice = field.placeholder;
+        }
+
+        ruleChoices = emptyChoice ? [{
+            text: emptyChoice,
             value: ''
         }].concat(field.choices) : field.choices;
         str = GetRuleValuesDropDown(ruleChoices, objectType, ruleIndex, selectedValue, inputName);
@@ -447,6 +497,11 @@ function isEmpty(str){
 
 function SetRuleProperty(objectType, ruleIndex, name, value){
     var obj = GetConditionalObject(objectType);
+
+    if ( ! obj.conditionalLogic.rules ) {
+        return;
+    }
+
     obj.conditionalLogic.rules[ruleIndex][name] = value;
 }
 
@@ -506,7 +561,7 @@ function TruncateRuleText(text){
 
 function gfAjaxSpinner(elem, imageSrc, inlineStyles) {
 
-    imageSrc     = typeof imageSrc == 'undefined' || ! imageSrc ? gf_vars.baseUrl + '/images/spinner.gif': imageSrc;
+    imageSrc     = typeof imageSrc == 'undefined' || ! imageSrc ? gf_vars.baseUrl + '/images/spinner.svg': imageSrc;
     inlineStyles = typeof inlineStyles != 'undefined' ? inlineStyles : '';
 
     this.elem = elem;
@@ -774,30 +829,38 @@ function ConfirmationObj() {
 
     };
 
-    gaddon.toggleFeedActive = function(img, addon_slug, feed_id){
-        var is_active = img.src.indexOf("active1.png") >=0 ? 0 : 1;
-        img.src = img.src.replace("active1.png", "spinner.gif");
-        img.src = img.src.replace("active0.png", "spinner.gif");
+	gaddon.toggleFeedSwitch = function( btn, is_active ) {
+		if ( is_active ) {
+			jQuery( btn ).removeClass( 'gform-status--active' ).addClass( 'gform-status--inactive' ).find( '.gform-status-indicator-status' ).html( __( 'Inactive', 'gravityforms' ) );
+		} else {
+			jQuery( btn ).removeClass( 'gform-status--inactive' ).addClass( 'gform-status--active' ).find( '.gform-status-indicator-status' ).html( __( 'Active', 'gravityforms' ) );
+		}
+	};
 
-        jQuery.post(ajaxurl, {
-            action: "gf_feed_is_active_" + addon_slug,
-            feed_id: feed_id,
-            is_active: is_active
-            },
-            function(response){
-                if(is_active){
-                    img.src = img.src.replace("spinner.gif", "active1.png");
-                    jQuery(img).attr('title',gf_vars.inactive).attr('alt', gf_vars.inactive);
-                }
-                else{
-                    img.src = img.src.replace("spinner.gif", "active0.png");
-                    jQuery(img).attr('title',gf_vars.active).attr('alt', gf_vars.active);
-                }
-            }
-        );
+	gaddon.toggleFeedActive = function( btn, addon_slug, feed_id ) {
+		var is_active = jQuery( btn ).hasClass( 'gform-status--active' );
 
-        return true;
-    };
+		jQuery.post( ajaxurl, {
+			action: "gf_feed_is_active_" + addon_slug,
+			feed_id: feed_id,
+			is_active: is_active ? 0 : 1,
+			nonce: jQuery( '#feed_list' ).val()
+			},
+			function( response) {
+				if ( response.success ) {
+					gaddon.toggleFeedSwitch( btn, is_active );
+				} else {
+					gaddon.toggleFeedSwitch( btn, ! is_active );
+					alert( response.data.message );
+				}
+			}
+		).fail( function( jqXHR, textStatus, error ) {
+			gaddon.toggleFeedSwitch( btn, ! is_active );
+			alert( error );
+		} );
+
+		return true;
+	};
 
     gaddon.deleteFeed = function (id) {
         $("#single_action").val("delete");
@@ -1027,6 +1090,10 @@ var gfMergeTagsObj = function( form, element ) {
 
 		self.mergeTagIcon.find( '.tooltip-merge-tag' ).tooltip( {
 			show:    { delay:1250 },
+            position: {
+                my: 'center bottom',
+                at: 'center-3 top-10'
+            },
 			content: function () { return jQuery( this ).prop( 'title' ); }
 		} );
 
@@ -1416,9 +1483,10 @@ var gfMergeTagsObj = function( form, element ) {
 				if(!tags.hasOwnProperty(i))
 					continue;
 
-				var tag = tags[i];
+                var tag   = tags[ i ];
+                var label = gform.tools.stripSlashes( tag.label );
 
-				var tagHTML = jQuery( '<a class="" data-value="' + tag.tag + '">' + tag.label + '</a>' );
+				var tagHTML = jQuery( '<a class="" data-value="' + escapeAttr( tag.tag ) + '">' + escapeHtml( label ) + '</a>' );
 				tagHTML.on( 'click.gravityforms', self.bindMergeTagListClick );
 
 				optionsHTML.push( jQuery( '<li></li>' ).html( tagHTML ) );
@@ -1566,10 +1634,12 @@ var gfMergeTagsObj = function( form, element ) {
 
 	};
 
-	// If element is defined, initialze.
+	// If element is defined, initialize.
 	if ( self.elem ) {
 		self.init();
 	}
+
+
 
 };
 
@@ -1586,11 +1656,7 @@ var FeedConditionObj = function( args ) {
         gform.addFilter( 'gform_conditional_logic_description', 'FeedConditionConditionalDescription' );
 
         jQuery(document).ready(function(){
-            ToggleConditionalLogic( true, "feed_condition" );
-        });
-
-        jQuery('input#feed_condition_conditional_logic').parents('form').on('submit', function(){
-            jQuery('input#feed_condition_conditional_logic_object').val( JSON.stringify( fcobj.logicObject ) );
+            ToggleConditionalLogic( true,"feed_condition" );
         });
 
     };
@@ -1641,3 +1707,84 @@ function isSet( $var ) {
     return typeof $var != 'undefined';
 }
 
+/**
+ * Initialize form title tooltip.
+ */
+jQuery( document ).ready( function() {
+
+    var $formTitle = jQuery( '.gform-form-toolbar__form-title span' );
+
+    // If form title is not present, exit.
+    if ( ! $formTitle ) {
+        return;
+    }
+
+    // Clone form title.
+    var $clone = $formTitle.clone().css( { display: 'inline', width: 'auto', visibility: 'hidden' } ).appendTo( $formTitle );
+
+    // If cloned title is wider, initialize tooltip.
+    if ( $clone.width() > $formTitle.width() ) {
+        jQuery( '.gform-form-toolbar__form-title span' ).tooltip( {
+            position:     {
+                my: 'left center',
+                at: 'right+6 center'
+            },
+            tooltipClass: 'arrow-left'
+        } );
+    }
+
+    $clone.remove();
+
+} );
+
+/**
+ * The entity mappings used by the escaping helper functions.
+ *
+ * Also used in form_editor.js
+ *
+ * @since 2.4.13
+ *
+ * @type {object}
+ */
+var entityMap = {
+	'&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'"': '&quot;',
+	'\'': '&#39;',
+	'/': '&#x2F;',
+	'`': '&#x60;',
+	'=': '&#x3D;'
+};
+
+/**
+ * Escapes the given string string ready to be output as the value of an HTML attribute.
+ *
+ * Also used in form_editor.js
+ *
+ * @since 2.4.13
+ *
+ * @param {string} string The string to escape.
+ * @returns {string}
+ */
+function escapeAttr( string ) {
+	return String( string ).replace( /["']/g, function ( s ) {
+		return entityMap[s];
+	} );
+}
+
+/**
+ * Escapes the given string string ready to be output to the page as HTML.
+ *
+ * Also used in form_editor.js
+ *
+ * @since 2.4.13
+ *
+ * @param {string} string The string to escape.
+ * @returns {string}
+ */
+function escapeHtml( string ) {
+	return String( string ).replace( /[&<>"'`=\/]/g, function ( s ) {
+		return entityMap[s];
+	} );
+}
