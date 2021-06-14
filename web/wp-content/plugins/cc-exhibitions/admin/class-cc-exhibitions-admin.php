@@ -104,6 +104,12 @@ class Cc_Exhibitions_Admin {
 			'items_list_navigation' => __( 'Items list navigation', 'text_domain' ),
 			'filter_items_list'     => __( 'Filter items list', 'text_domain' ),
 		);
+		$rewrite = array(
+			'slug'                  => 'exhibition',
+			'with_front'            => true,
+			'pages'                 => true,
+			'feeds'                 => true,
+		);
 		$args = array(
 			'label'                 => __( 'Exhibition', 'text_domain' ),
 			'description'           => __( 'Colby College Exhibitions', 'text_domain' ),
@@ -121,6 +127,7 @@ class Cc_Exhibitions_Admin {
 			'has_archive'           => true,
 			'exclude_from_search'   => false,
 			'publicly_queryable'    => true,
+			'rewrite'               => $rewrite,
 			'capability_type'       => 'page',
 		);
 		register_post_type( 'cc_exhibition', $args );
