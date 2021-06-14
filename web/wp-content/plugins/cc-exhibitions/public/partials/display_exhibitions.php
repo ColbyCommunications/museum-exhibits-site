@@ -2,7 +2,6 @@
 
 <div class="exhibitions" id="exhibitions">
 	<?php
-
 	if ( ! empty( $summary ) ) : ?>
 		<div class="exhibitions__summary">
 			<p><?php echo wp_kses_post( $summary ); ?></p>
@@ -15,17 +14,11 @@
 			<?php
 			$index = 0;
 			foreach ( $posts as $item ) {
-				$link    = esc_url( get_permalink( $item->ID ) );
-				$content = apply_filters( 'the_content', $item->post_content );
-				$image   = get_the_post_thumbnail( $item->ID, 'medium' );
-				$e_fields = get_fields( $item->ID );
-				$start_date   = $e_fields['e_start_group'];
-				$end_date     = $e_fields['e_end_group'];
-
-				$date_display = $start_date;
-				if ( $start_date !== $end_date ) {
-					$date_display = $date_display + ' - ' . $end_date;
-				}
+				$link         = esc_url( get_permalink( $item->ID ) );
+				$content      = apply_filters( 'the_content', $item->post_content );
+				$image        = get_the_post_thumbnail( $item->ID, 'medium' );
+				$e_fields     = get_fields( $item->ID );
+				$date_display =  Cc_Exhibitions_Public::show_date_range( $e_fields );
 
 				if ( empty( $image ) ) {
 					// $image = sprintf('<img src="%s" alt="No Image" />', get_stylesheet_directory_uri() . '/images/no-image.jpg' );
@@ -45,6 +38,8 @@
 						</p>
 						<p>
 							<?php echo wp_kses_post( wp_trim_words( $item->post_content, 50 ) ); ?>
+						</p>
+						<p>
 							<a href="<?php echo $link; ?>" class="more-link">SEE MORE</a>
 						</p>
 					</div>

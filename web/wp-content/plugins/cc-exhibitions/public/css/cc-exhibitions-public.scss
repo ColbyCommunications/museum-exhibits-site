@@ -1,0 +1,14 @@
+
+.exhibitions {
+	&__item {
+		display: flex;
+		&__image {
+			flex: 0 0 150px;
+			padding-right: 20px;
+		}
+		&__details {
+			
+			flex: 1;
+		}
+	}
+}

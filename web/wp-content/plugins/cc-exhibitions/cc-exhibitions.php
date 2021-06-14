@@ -13,7 +13,7 @@
  * @package           Cc_Exhibitions
  *
  * @wordpress-plugin
- * Plugin Name:       CC Exhibitions
+ * Plugin Name:       Colby - Exhibitions
  * Plugin URI:        https://www.neilarnold.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0

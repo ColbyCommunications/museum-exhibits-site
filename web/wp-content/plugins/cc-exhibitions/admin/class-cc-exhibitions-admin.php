@@ -48,10 +48,8 @@ class Cc_Exhibitions_Admin {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-
+		$this->version     = $version;
 	}
 
 	/**
@@ -143,6 +141,7 @@ class Cc_Exhibitions_Admin {
 	 * @return array Post objects.
 	 */
 	public static function get_all( $search_args, &$pagination = null, &$summary = null ) {
+		$today          = date( 'Ymd' );
 		$paged          = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 		$posts_per_page = $search_args['posts_per_page'] ?? 10;
 		$meta_query     = [];
@@ -169,50 +168,53 @@ class Cc_Exhibitions_Admin {
 			];
 		}
 
-		if ( 'upcoming' === array_key_exists( 'type', $search_args ) ) {
-			$meta_query[] = [
-				// 'relation' => 'OR',
-				// 'start_clause' => array(
-				// 	'key'     => 'e_start_group_date',
-				// 	'compare' => '>=',
-				// 	'value'   => $today,
-				// ),
-				'end_clause' => array(
-					'key'     => 'e_end_group_date',
-					'compare' => '>=',
-					'value'   => $today,
-				),
-			];
-		}
-		if ( 'current' === array_key_exists( 'type', $search_args ) ) {
-			$meta_query[] = [
-				'relation' => 'OR',
-				'start_clause' => array(
-					'key'     => 'e_start_group_date',
-					'compare' => '>=',
-					'value'   => $today,
-				),
-				'end_clause' => array(
-					'key'     => 'e_end_group_date',
-					'compare' => '<=',
-					'value'   => $today,
-				),
-			];
-		}
-		if ( 'past' === array_key_exists( 'type', $search_args ) ) {
-			$meta_query[] = [
-				// 'relation' => 'OR',
-				// 'start_clause' => array(
-				// 	'key'     => 'e_start_group_date',
-				// 	'compare' => '<=',
-				// 	'value'   => $today,
-				// ),
-				'end_clause' => array(
-					'key'     => 'e_end_group_date',
-					'compare' => '<=',
-					'value'   => $today,
-				),
-			];
+		if ( true === array_key_exists( 'type', $search_args ) ) {
+			if ( 'upcoming' === $search_args['type'] ) {
+				$meta_query[] = [
+					// 'relation' => 'AND',
+					'start_clause' => array(
+						'key'     => 'e_start_date',
+						'compare' => '>',
+						'value'   => $today,
+					),
+					'end_clause' => array(
+						'key'     => 'e_end_date',
+						'compare' => '>=',
+						'value'   => $today,
+					),
+				];
+			}
+			if ( 'current' === $search_args['type'] ) {
+				$meta_query[] = [
+					// 'relation' => 'OR',
+					'start_clause' => array(
+						'key'     => 'e_start_date',
+						'compare' => '<=',
+						'value'   => $today,
+					),
+					'end_clause' => array(
+						'key'     => 'e_end_date',
+						'compare' => '>=',
+						'value'   => $today,
+					),
+				];
+			}
+
+			if ( 'past' === $search_args['type'] ) {
+				$meta_query[] = [
+					// 'relation' => 'OR',
+					// 'start_clause' => array(
+					// 	'key'     => 'e_start_date',
+					// 	'compare' => '<=',
+					// 	'value'   => $today,
+					// ),
+					'end_clause' => array(
+						'key'     => 'e_end_date',
+						'compare' => '<',
+						'value'   => $today,
+					),
+				];
+			}
 		}
 
 		$args['meta_query'] = $meta_query;
