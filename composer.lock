@@ -148,7 +148,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColbyCommunications/colby-museum-exhibits-theme",
-                "reference": "dc76e068e5b34e35a4ed3dcb42c08cffced6628e"
+                "reference": "09acaf762db769a13181cc3fce2d890b6fc3a2d1"
             },
             "require": {
                 "composer/installers": "~1.0",
@@ -188,7 +188,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2021-06-11 14:00:05"
+            "time": "2021-06-15 14:47:52"
         },
         {
             "name": "composer/installers",

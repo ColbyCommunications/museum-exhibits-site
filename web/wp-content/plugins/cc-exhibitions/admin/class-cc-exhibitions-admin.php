@@ -163,7 +163,7 @@ class Cc_Exhibitions_Admin {
 		if ( true === array_key_exists( 'is_travelling', $search_args ) ) {
 			$meta_query[] = [
 				'key'     => 'e_is_travelling',
-				'value'   => $search_args['sponsored'],
+				'value'   => $search_args['is_travelling'],
 				'compare' => '=',
 			];
 		}
