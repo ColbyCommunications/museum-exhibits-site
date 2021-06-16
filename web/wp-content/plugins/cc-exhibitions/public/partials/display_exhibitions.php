@@ -3,7 +3,7 @@
 <div class="exhibitions" id="exhibitions">
 	<?php
 	if ( ! empty( $summary ) ) : ?>
-		<div class="exhibitions__summary">
+		<div class="exhibitions__summary" >
 			<p><?php echo wp_kses_post( $summary ); ?></p>
 		</div>
 	<?php endif; ?>
