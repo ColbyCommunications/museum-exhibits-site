@@ -22,6 +22,7 @@
 				if ( empty( $excerpt ) ) {
 					$excerpt = wp_trim_words( apply_filters( 'the_content', $item->post_content ), 50 );
 				}
+				$travel = array_key_exists( 'e_travelling_details', $e_fields ) ? $e_fields['e_travelling_details'] : '';
 
 				if ( empty( $image ) ) {
 					// $image = sprintf('<img src="%s" alt="No Image" />', get_stylesheet_directory_uri() . '/images/no-image.jpg' );
@@ -42,8 +43,13 @@
 						<p>
 							<?php echo $excerpt; ?>
 						</p>
+						<?php
+						if ( $is_travel && ! empty( $travel ) ) {
+							echo '<p>' . $travel . '</p>';
+						}
+						?>
 						<p>
-							<a href="<?php echo $link; ?>" class="more-link">SEE MORE</a>
+							<a href="<?php echo $link; ?>" class="more-link">VIEW EXHIBITION DETAILS</a>
 						</p>
 					</div>
 				</div>

@@ -76,13 +76,14 @@ class Cc_Exhibitions_Public {
 
 	public function shortcode_display_exhibitions( $atts ) {
 		$atts = shortcode_atts( [ 'type' => 'upcoming' ], $atts );
-
+		$is_travel   = false;
 		$pagination  = '';
 		$summary     = '';
 		$search_args = Cc_Exhibitions_Admin::get_search_args();
 
 		if ( 'travelling' === $atts['type'] ) {
 			$search_args['is_travelling'] = 1;
+			$is_travel                    = true;
 		} else {
 			$search_args['type'] = $atts['type'];
 		}
