@@ -112,7 +112,7 @@ class Cc_Exhibitions_Admin {
 			'label'                 => __( 'Exhibition', 'text_domain' ),
 			'description'           => __( 'Colby College Exhibitions', 'text_domain' ),
 			'labels'                => $labels,
-			'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+			'supports'              => array( 'title', 'editor', 'thumbnail', 'revisions', 'excerpt' ),
 			'hierarchical'          => false,
 			'public'                => true,
 			'show_ui'               => true,
