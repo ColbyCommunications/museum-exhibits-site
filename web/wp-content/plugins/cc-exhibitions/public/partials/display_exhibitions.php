@@ -15,10 +15,13 @@
 			$index = 0;
 			foreach ( $posts as $item ) {
 				$link         = esc_url( get_permalink( $item->ID ) );
-				$content      = apply_filters( 'the_content', $item->post_content );
-				$image        = get_the_post_thumbnail( $item->ID, 'medium' );
+				$image        = get_the_post_thumbnail( $item->ID, 'large' );
 				$e_fields     = get_fields( $item->ID );
 				$date_display =  Cc_Exhibitions_Public::show_date_range( $e_fields );
+				$excerpt      = $item->post_excerpt;
+				if ( empty( $excerpt ) ) {
+					$excerpt = wp_trim_words( apply_filters( 'the_content', $item->post_content ), 50 );
+				}
 
 				if ( empty( $image ) ) {
 					// $image = sprintf('<img src="%s" alt="No Image" />', get_stylesheet_directory_uri() . '/images/no-image.jpg' );
@@ -37,7 +40,7 @@
 							<?php echo $date_display; ?>
 						</p>
 						<p>
-							<?php echo wp_kses_post( wp_trim_words( $item->post_content, 50 ) ); ?>
+							<?php echo $excerpt; ?>
 						</p>
 						<p>
 							<a href="<?php echo $link; ?>" class="more-link">SEE MORE</a>

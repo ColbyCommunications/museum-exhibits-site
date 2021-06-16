@@ -148,7 +148,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColbyCommunications/colby-museum-exhibits-theme",
-                "reference": "784de08b82d0e47d57a4f495dda78c3fa784b117"
+                "reference": "7b8faaea674f3c4ae99ec04ec487bd50b707e6a1"
             },
             "require": {
                 "composer/installers": "~1.0",
@@ -188,7 +188,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2021-06-16 18:01:57"
+            "time": "2021-06-16 19:38:22"
         },
         {
             "name": "composer/installers",
@@ -1936,16 +1936,16 @@
         },
         {
             "name": "wp-graphql/wp-graphql",
-            "version": "v1.4.0",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-graphql/wp-graphql.git",
-                "reference": "0d5dc5e3e35f9019080a1338a9e2f89b7afd0ded"
+                "reference": "a90fd3df8f0192d9eda26e7360f91bacc8e7686f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-graphql/wp-graphql/zipball/0d5dc5e3e35f9019080a1338a9e2f89b7afd0ded",
-                "reference": "0d5dc5e3e35f9019080a1338a9e2f89b7afd0ded",
+                "url": "https://api.github.com/repos/wp-graphql/wp-graphql/zipball/a90fd3df8f0192d9eda26e7360f91bacc8e7686f",
+                "reference": "a90fd3df8f0192d9eda26e7360f91bacc8e7686f",
                 "shasum": ""
             },
             "require": {
@@ -2009,7 +2009,7 @@
                 }
             ],
             "description": "GraphQL API for WordPress",
-            "time": "2021-06-15T16:14:57+00:00"
+            "time": "2021-06-16T19:12:54+00:00"
         },
         {
             "name": "wpackagist-plugin/cache-control",
