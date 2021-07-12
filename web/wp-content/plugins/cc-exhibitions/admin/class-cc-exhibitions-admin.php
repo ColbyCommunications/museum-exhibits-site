@@ -152,7 +152,9 @@ class Cc_Exhibitions_Admin {
 			'posts_per_page' => $posts_per_page,
 			'paged'          => $paged,
 			'orderby'        => [
-				'post_title' => 'ASC',
+				'start_clause' => 'DESC',
+				'end_clause'   => 'DESC',
+				'post_title'   => 'ASC',
 			],
 		];
 

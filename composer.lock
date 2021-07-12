@@ -148,7 +148,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColbyCommunications/colby-museum-exhibits-theme",
-                "reference": "1d77963a6ebdcd06d71d11eb6528b610709a54a9"
+                "reference": "cb5c6e720cce9d182dd15b658f5152db4c9728fa"
             },
             "require": {
                 "composer/installers": "~1.0",
@@ -188,7 +188,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2021-06-16 20:25:56"
+            "time": "2021-07-12 17:45:25"
         },
         {
             "name": "composer/installers",
@@ -771,24 +771,24 @@
         },
         {
             "name": "ivome/graphql-relay-php",
-            "version": "v0.5.0",
+            "version": "v0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ivome/graphql-relay-php.git",
-                "reference": "b227c17e79564d147db2162329f5bdbe19192313"
+                "reference": "7055fd45b7e552cee4d1290849b84294b0049373"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ivome/graphql-relay-php/zipball/b227c17e79564d147db2162329f5bdbe19192313",
-                "reference": "b227c17e79564d147db2162329f5bdbe19192313",
+                "url": "https://api.github.com/repos/ivome/graphql-relay-php/zipball/7055fd45b7e552cee4d1290849b84294b0049373",
+                "reference": "7055fd45b7e552cee4d1290849b84294b0049373",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4,<8.0-DEV",
-                "webonyx/graphql-php": ">=0.7.0"
+                "php": "^7.1 || ^8.0",
+                "webonyx/graphql-php": "^14.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
                 "satooshi/php-coveralls": "~1.0"
             },
             "type": "library",
@@ -808,7 +808,7 @@
                 "api",
                 "graphql"
             ],
-            "time": "2018-05-10T20:18:11+00:00"
+            "time": "2021-04-24T19:31:29+00:00"
         },
         {
             "name": "johnpbloch/wordpress-core",
@@ -1660,16 +1660,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.4.25",
+            "version": "v4.4.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "dfe132c5c6d89f90ce7f961742cc532e9ca16dd4"
+                "reference": "2f7fa60b8d10ca71c30dc46b0870143183a8f131"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/dfe132c5c6d89f90ce7f961742cc532e9ca16dd4",
-                "reference": "dfe132c5c6d89f90ce7f961742cc532e9ca16dd4",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/2f7fa60b8d10ca71c30dc46b0870143183a8f131",
+                "reference": "2f7fa60b8d10ca71c30dc46b0870143183a8f131",
                 "shasum": ""
             },
             "require": {
@@ -1727,7 +1727,7 @@
             ],
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
-            "time": "2021-05-26T17:39:37+00:00"
+            "time": "2021-06-06T08:51:46+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -1851,16 +1851,16 @@
         },
         {
             "name": "webonyx/graphql-php",
-            "version": "v14.8.0",
+            "version": "v14.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webonyx/graphql-php.git",
-                "reference": "7149ebfb0ba4132ca3cc5ef943b8e2ece58a5d5b"
+                "reference": "36b83621deb5eae354347a2e86dc7aec81b32a82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/7149ebfb0ba4132ca3cc5ef943b8e2ece58a5d5b",
-                "reference": "7149ebfb0ba4132ca3cc5ef943b8e2ece58a5d5b",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/36b83621deb5eae354347a2e86dc7aec81b32a82",
+                "reference": "36b83621deb5eae354347a2e86dc7aec81b32a82",
                 "shasum": ""
             },
             "require": {
@@ -1903,7 +1903,7 @@
                 "api",
                 "graphql"
             ],
-            "time": "2021-06-01T10:24:56+00:00"
+            "time": "2021-06-15T16:14:17+00:00"
         },
         {
             "name": "wp-graphql/wp-graphiql",
@@ -1936,22 +1936,22 @@
         },
         {
             "name": "wp-graphql/wp-graphql",
-            "version": "v1.4.2",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-graphql/wp-graphql.git",
-                "reference": "a90fd3df8f0192d9eda26e7360f91bacc8e7686f"
+                "reference": "551ffd8d4089234081d728774988b93a1967506c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-graphql/wp-graphql/zipball/a90fd3df8f0192d9eda26e7360f91bacc8e7686f",
-                "reference": "a90fd3df8f0192d9eda26e7360f91bacc8e7686f",
+                "url": "https://api.github.com/repos/wp-graphql/wp-graphql/zipball/551ffd8d4089234081d728774988b93a1967506c",
+                "reference": "551ffd8d4089234081d728774988b93a1967506c",
                 "shasum": ""
             },
             "require": {
-                "ivome/graphql-relay-php": "0.5.0",
-                "php": ">=7.1.0",
-                "webonyx/graphql-php": "14.8.0"
+                "ivome/graphql-relay-php": "0.6.0",
+                "php": "^7.1 || ^8.0",
+                "webonyx/graphql-php": "14.9.0"
             },
             "require-dev": {
                 "automattic/vipwpcs": "^2.2",
@@ -1968,12 +1968,12 @@
                 "phpcompatibility/phpcompatibility-wp": "^2.1.0",
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^0.12.64",
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^8.5",
                 "simpod/php-coveralls-mirror": "^3.0",
                 "squizlabs/php_codesniffer": "^3.5.7",
                 "szepeviktor/phpstan-wordpress": "^0.7.1",
                 "wp-coding-standards/wpcs": "^2.3",
-                "wp-graphql/wp-graphql-testcase": "^1.1"
+                "wp-graphql/wp-graphql-testcase": "~2.1"
             },
             "type": "wordpress-plugin",
             "autoload": {
@@ -2009,7 +2009,7 @@
                 }
             ],
             "description": "GraphQL API for WordPress",
-            "time": "2021-06-16T19:12:54+00:00"
+            "time": "2021-07-08T19:57:00+00:00"
         },
         {
             "name": "wpackagist-plugin/cache-control",
@@ -2033,15 +2033,15 @@
         },
         {
             "name": "wpackagist-plugin/capability-manager-enhanced",
-            "version": "2.0.2",
+            "version": "2.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/capability-manager-enhanced/",
-                "reference": "tags/2.0.2"
+                "reference": "tags/2.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/capability-manager-enhanced.2.0.2.zip",
+                "url": "https://downloads.wordpress.org/plugin/capability-manager-enhanced.2.1.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2113,15 +2113,15 @@
         },
         {
             "name": "wpackagist-plugin/elementor",
-            "version": "3.2.5",
+            "version": "3.3.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/elementor/",
-                "reference": "tags/3.2.5"
+                "reference": "tags/3.3.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/elementor.3.2.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/elementor.3.3.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2193,15 +2193,15 @@
         },
         {
             "name": "wpackagist-plugin/publishpress",
-            "version": "3.3.3",
+            "version": "3.4.0",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/publishpress/",
-                "reference": "tags/3.3.3"
+                "reference": "tags/3.4.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/publishpress.3.3.3.zip",
+                "url": "https://downloads.wordpress.org/plugin/publishpress.3.4.0.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -2293,15 +2293,15 @@
         },
         {
             "name": "wpackagist-theme/hello-elementor",
-            "version": "2.3.1",
+            "version": "2.4.1",
             "source": {
                 "type": "svn",
                 "url": "https://themes.svn.wordpress.org/hello-elementor/",
-                "reference": "2.3.1"
+                "reference": "2.4.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/theme/hello-elementor.2.3.1.zip",
+                "url": "https://downloads.wordpress.org/theme/hello-elementor.2.4.1.zip",
                 "reference": null,
                 "shasum": null
             },
