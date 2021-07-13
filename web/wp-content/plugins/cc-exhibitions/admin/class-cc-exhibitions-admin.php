@@ -152,8 +152,8 @@ class Cc_Exhibitions_Admin {
 			'posts_per_page' => $posts_per_page,
 			'paged'          => $paged,
 			'orderby'        => [
-				'start_clause' => 'DESC',
-				'end_clause'   => 'DESC',
+				'start_clause' => 'ASC',
+				'end_clause'   => 'ASC',
 				'post_title'   => 'ASC',
 			],
 		];
@@ -203,6 +203,11 @@ class Cc_Exhibitions_Admin {
 			}
 
 			if ( 'past' === $search_args['type'] ) {
+				$args['orderby'] = [
+					'start_clause' => 'DESC',
+					'end_clause'   => 'DESC',
+					'post_title'   => 'ASC',
+				];
 				$meta_query[] = [
 					// 'relation' => 'OR',
 					// 'start_clause' => array(
