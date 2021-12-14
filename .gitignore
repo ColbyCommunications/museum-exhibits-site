@@ -21,9 +21,6 @@
 /web/wp-content/upgrade/*
 !/web/wp-content/upgrade/index.php
 
-
-!/web/wp-content/plugins/cc-exhibitions
-
 # gravity forms
 !/web/wp-content/plugins/gravity-forms-add-menu-link
 !/web/wp-content/plugins/gravityforms
