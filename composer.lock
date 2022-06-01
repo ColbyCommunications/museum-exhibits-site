@@ -128,7 +128,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ColbyCommunications/colby-museum-exhibits-theme",
-                "reference": "21353034f3ac05dbccfd069b0dc58f0af688fb02"
+                "reference": "80097326b2d2faf8ce92bd7c65c683011a1195b2"
             },
             "require": {
                 "php": "^7.4|^8.0",
@@ -193,7 +193,7 @@
                 "issues": "https://github.com/roots/sage/issues",
                 "forum": "https://discourse.roots.io/"
             },
-            "time": "2022-06-01T20:25:11+00:00"
+            "time": "2022-06-01T20:36:26+00:00"
         },
         {
             "name": "colbycommunications/colby-ticket",
