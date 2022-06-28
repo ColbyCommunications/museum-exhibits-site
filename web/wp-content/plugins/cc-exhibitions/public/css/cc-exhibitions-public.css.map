@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAEE,AAAD,kBAAO,CAAC;EACP,OAAO,EAAE,IAAI;CASb;;AARC,AAAD,yBAAQ,CAAC;EACR,IAAI,EAAE,SAAS;EACf,aAAa,EAAE,IAAI;CACnB;;AACA,AAAD,2BAAU,CAAC;EAEV,IAAI,EAAE,CAAC;CACP",
-    "sources": [
-        "cc-exhibitions-public.scss"
-    ],
-    "names": [],
-    "file": "cc-exhibitions-public.css"
-}

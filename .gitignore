@@ -21,9 +21,6 @@
 /web/wp-content/upgrade/*
 !/web/wp-content/upgrade/index.php
 
-# cc-exhibitions
-!/web/wp-content/plugins/jet-blog
-
 #Ignore mac stuff
 *.DS_Store
 
