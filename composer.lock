@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "412f4c4d53972394f9f5a9f993984b2c",
+    "content-hash": "398882dbf2fc3c45f225e01439059be6",
     "packages": [
         {
             "name": "brick/math",
@@ -8261,15 +8261,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-saml-auth",
-            "version": "1.2.7",
+            "version": "2.0.1",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-saml-auth/",
-                "reference": "tags/1.2.7"
+                "reference": "tags/2.0.1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-saml-auth.1.2.7.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-saml-auth.2.0.1.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
