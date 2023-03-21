@@ -91,16 +91,16 @@
         },
         {
             "name": "colbycommunications/cc-exhibitions",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ColbyCommunications/cc-exhibitions.git",
-                "reference": "6617a8e76661d43e6e3f2e6aa8df598d85110501"
+                "reference": "76ad5ae8f8719c52b11dd3650710b6206fe4d21e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.colby.edu/dist/colbycommunications/cc-exhibitions/colbycommunications-cc-exhibitions-6617a8e76661d43e6e3f2e6aa8df598d85110501-zip-ae5ef3.zip",
-                "reference": "6617a8e76661d43e6e3f2e6aa8df598d85110501"
+                "url": "https://satis.colby.edu/dist/colbycommunications/cc-exhibitions/colbycommunications-cc-exhibitions-76ad5ae8f8719c52b11dd3650710b6206fe4d21e-zip-c4de34.zip",
+                "reference": "76ad5ae8f8719c52b11dd3650710b6206fe4d21e"
             },
             "type": "wordpress-plugin",
             "authors": [
@@ -114,7 +114,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2023-03-20T18:30:45+00:00"
+            "time": "2023-03-21T17:24:08+00:00"
         },
         {
             "name": "colbycommunications/colby-museum-exhibits-theme",
