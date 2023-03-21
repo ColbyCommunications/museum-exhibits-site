@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab0a33f664938cb8ce04a45ee0def0db",
+    "content-hash": "ad429ba1cd9f3cbde1732e473fab4d19",
     "packages": [
         {
             "name": "brick/math",
@@ -91,16 +91,16 @@
         },
         {
             "name": "colbycommunications/cc-exhibitions",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:ColbyCommunications/cc-exhibitions.git",
-                "reference": "7739167f4b12657bde1a2b7198731c304a9fabb6"
+                "reference": "6617a8e76661d43e6e3f2e6aa8df598d85110501"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.colby.edu/dist/colbycommunications/cc-exhibitions/colbycommunications-cc-exhibitions-7739167f4b12657bde1a2b7198731c304a9fabb6-zip-79b683.zip",
-                "reference": "7739167f4b12657bde1a2b7198731c304a9fabb6"
+                "url": "https://satis.colby.edu/dist/colbycommunications/cc-exhibitions/colbycommunications-cc-exhibitions-6617a8e76661d43e6e3f2e6aa8df598d85110501-zip-ae5ef3.zip",
+                "reference": "6617a8e76661d43e6e3f2e6aa8df598d85110501"
             },
             "type": "wordpress-plugin",
             "authors": [
@@ -114,7 +114,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2022-06-01T17:24:19+00:00"
+            "time": "2023-03-20T18:30:45+00:00"
         },
         {
             "name": "colbycommunications/colby-museum-exhibits-theme",
@@ -8349,8 +8349,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "colbycommunications/colby-museum-exhibits-theme": 20,
-        "colbycommunications/cc-exhibitions": 20
+        "colbycommunications/colby-museum-exhibits-theme": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
