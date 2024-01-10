@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f08ea0c1bdba601465a26d176e0f431",
+    "content-hash": "2dba9b043e6d38272b7b15a0a9bf9ffb",
     "packages": [
         {
             "name": "brick/math",
@@ -8183,15 +8183,15 @@
         },
         {
             "name": "wpackagist-plugin/cloudflare",
-            "version": "4.12.2",
+            "version": "4.12.3",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/cloudflare/",
-                "reference": "tags/4.12.2"
+                "reference": "tags/4.12.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/cloudflare.4.12.2.zip"
+                "url": "https://downloads.wordpress.org/plugin/cloudflare.4.12.3.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
@@ -8327,15 +8327,15 @@
         },
         {
             "name": "wpackagist-plugin/wp-nested-pages",
-            "version": "3.2.6",
+            "version": "3.2.7",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/wp-nested-pages/",
-                "reference": "tags/3.2.6"
+                "reference": "tags/3.2.7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-nested-pages.3.2.6.zip"
+                "url": "https://downloads.wordpress.org/plugin/wp-nested-pages.3.2.7.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
