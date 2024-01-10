@@ -23,7 +23,7 @@
         "colbycommunications/cc-exhibitions": "dev-master",
         "wpackagist-plugin/wp-search-with-algolia": "2.7.0",
         "vlucas/phpdotenv": "^5.4",
-        "wpackagist-theme/hello-elementor": "2.9.0",
+        "wpackagist-theme/hello-elementor": "3.0.0",
         "wpackagist-plugin/wp-nested-pages": "3.2.7",
         "wpackagist-plugin/disable-comments": "2.4.5"
     },
